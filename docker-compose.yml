@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    ports:
+      - 8080:8080
+    restart: always
+
+  flask:
+    build:
+      context: ./flask
+    container_name: flask
+    restart: always
+    command: gunicorn --bind 0.0.0.0:8000 app:app
+    depends_on:
+      - reverse-proxy
