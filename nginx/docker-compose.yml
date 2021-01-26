@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+  proxy:
+    build: .
+    networks: 
+      - flask1
+    ports: 
+      - 80:80
+
+networks:
+  flask1:
+    external: 
+      name: flask1_default

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  flask1:
+    build: .
+    container_name: flask1
+    restart: always
+    command: gunicorn --bind 0.0.0.0:8000 app:app
